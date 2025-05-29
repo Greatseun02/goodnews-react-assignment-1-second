@@ -19,11 +19,19 @@ let doubleImages = [
 doubleImages = shuffle(doubleImages);
 
 function App() {
-
-
+  const [showWelcome, setShowWelcome]= useState(true);
   return (
     <div id='app'>
-      <p className='title'>Welcome to the game world</p>
+      {
+        showWelcome &&
+        <div className='screen'>
+          <div>
+            <h1>Welcome to guess the Image</h1>
+            <button onClick={()=>{setShowWelcome(false)}}>Click me</button>
+          </div>
+        </div>
+      }
+      <p className='title'>Guess the Image</p>
       <MemoryGame 
         images={doubleImages}
       />

@@ -1,56 +1,58 @@
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Image(
     {
         src, 
         clickedValue,
         setClickedValue,
-        clicked,
-        setClicked,
-        MAX_CLICK_PER_ROUND
     }:any
 ) {
-    let [showImageTemp, setShowImageTemp] = useState(false);
-    let [showImagePerm, setShowImagePerm] = useState(false);
+
+    let [showImage, setShowImage] = useState(false);
     
 
 
     function handleClick(){ 
-        // setClicked(clicked++)
-   
+        //once clicked I want to check if clicked is first or second
+        //if clickedValue.src does not exist that means we are click for
+        //for first time
+
+        //if click for first time
         if(!clickedValue.src){
             
-            //temp show
-            setShowImagePerm(true);
+            //i want to show the image that we clicked on
+            setShowImage(true);
+
+            //i also want to add it as the current clicked element
+            // src contains the source, and setShow contains the function to update whether to show
+
 
             //add it has clicked
-            setClickedValue({src:src, setShow:setShowImagePerm})
+            setClickedValue({src:src, setShow:setShowImage})
 
         }else{
-             //meaning it is second to be clicked
-            //show temp to user sha
-            setShowImagePerm(true);
 
-            //if the src is what we clicked before add perm to prev and this
+            //if a clicked value is found before that means we need to 
+            //compart the clicked value source with this clicked one
             
+            //first I need to show image to my user so they can see what they clicked
+            setShowImage(true);
+
+            //I want to check if the src is the prev src then
+            //I should just clear 
+
+            setClickedValue({})
+
             setTimeout(()=>{
                 if(!(clickedValue.src === src)){
-                    //perm status for current
                 
-                    //perm staus for prev
-                    setShowImagePerm(false)
+                    setShowImage(false)
                     clickedValue.setShow(false)
-                    setClickedValue({})
+                }else{
+               
                 }
             }, 1000)
            
-
-        
-
-            // setTimeout(()=>{
-                
-            // }, 1000)
-            //compare
         }
 
 
@@ -66,7 +68,7 @@ export default function Image(
 
     return (
     <div className='imgDiv'>
-        {(showImagePerm || showImageTemp) ? <img src={src}/> : <div className="falseDiv" onClick={handleClick}></div>}
+        {(showImage) ? <img src={src}/> : <div className="falseDiv" onClick={handleClick}></div>}
     </div>
   )
 }
