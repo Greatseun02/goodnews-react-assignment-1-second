@@ -22,11 +22,12 @@ function App() {
 
 
   return (
-    <>
+    <div id='app'>
+      <p className='title'>Welcome to the game world</p>
       <MemoryGame 
         images={doubleImages}
       />
-    </>
+    </div>
   )
 }
 
