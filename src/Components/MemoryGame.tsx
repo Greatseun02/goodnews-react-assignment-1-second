@@ -12,7 +12,6 @@ export default function MemoryGame({images, setCount, count, highScore, setHighS
   useEffect(
     ()=>{
       if(srcs.length === 6){
-        console.log("count")
         if(count < Number(highScore)){
           setHighScore(count.toString());
           sessionStorage.setItem("highscore", count.toString());
