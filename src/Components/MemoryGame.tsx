@@ -1,22 +1,35 @@
-import { useState, type SetStateAction } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import Image from './Image'
 
 
 type valueStateType = {value:string, setValue:SetStateAction<boolean> | null}
 
-export default function MemoryGame({images}: {images:string[]}) {
+export default function MemoryGame({images, setCount, count, highScore, setHighScore}: {images:string[], highScore:string, count:number, setHighScore:Dispatch<SetStateAction<string>>, setCount:Dispatch<SetStateAction<number>>}) {
 
   const [clickedValue, setClickedValue] = useState<valueStateType>({value:"", setValue:null});
+  const [srcs, setSrcs] = useState([]);
+
+  useEffect(
+    ()=>{
+      if(srcs.length === 12){
+        if(count > Number(highScore)){
+          setHighScore(count.toString());
+          sessionStorage.setItem("highscore", count.toString());
+        }
+      }
+    }
+    ,[srcs]
+  )
 
   return (
     <div className='imgDivContainer'>
         {
             images.map(
-                (image, count)=> 
+                (image, index)=> 
                 <Image
                     clickedValue = {clickedValue}
                     setClickedValue= {setClickedValue}
-                    key={count} src={image}
+                    key={index} src={image} setCount={setCount} count = {count}
                 />
             )
         }

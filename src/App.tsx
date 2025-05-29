@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import MemoryGame from './Components/MemoryGame'
 import { shuffle } from './utils'
@@ -21,7 +21,16 @@ doubleImages = shuffle(doubleImages);
 function App() {
   const [showWelcome, setShowWelcome]= useState(true);
   const [count, setCount] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState("0");
+
+  useEffect(()=>{
+    let score = sessionStorage.getItem("highscore");
+
+    if(score){
+      setHighScore(score);
+    }
+
+  }, [])
 
   return (
     <div id='app'>
@@ -37,12 +46,13 @@ function App() {
       <div>
         <p className='title'>Guess the Image</p>
         <div className='metric'>
-          <p>Count: </p>
-          <p>High Score:</p>
+          <p>Count: {count}</p>
+          <p>High Score: {count}</p>
         </div>
       </div>
       <MemoryGame 
         images={doubleImages}
+        count={count}
         setCount={setCount}
         highScore={highScore}
         setHighScore={setHighScore}

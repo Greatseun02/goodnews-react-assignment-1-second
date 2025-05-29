@@ -5,6 +5,8 @@ export default function Image(
         src, 
         clickedValue,
         setClickedValue,
+        count,
+        setCount,
     }:any
 ) {
 
@@ -31,7 +33,7 @@ export default function Image(
             setClickedValue({src:src, setShow:setShowImage})
 
         }else{
-
+            
             //if a clicked value is found before that means we need to 
             //compart the clicked value source with this clicked one
             
@@ -51,11 +53,13 @@ export default function Image(
                     setShowImage(false)
                     clickedValue.setShow(false)
                 }else{
-               
+                    setCount(count++)
                 }
             }, 1000)
            
         }
+
+        
 
 
 
