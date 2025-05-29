@@ -25,11 +25,9 @@ function App() {
 
   useEffect(()=>{
     let score = sessionStorage.getItem("highscore");
-
     if(score){
       setHighScore(score);
     }
-
   }, [])
 
   return (
@@ -47,7 +45,7 @@ function App() {
         <p className='title'>Guess the Image</p>
         <div className='metric'>
           <p>Count: {count}</p>
-          <p>High Score: {count}</p>
+          <p>High Score: {highScore}</p>
         </div>
       </div>
       <MemoryGame 

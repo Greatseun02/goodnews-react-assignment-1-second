@@ -7,12 +7,13 @@ export default function Image(
         setClickedValue,
         count,
         setCount,
+        setSrcs,
+        srcs
     }:any
 ) {
 
     let [showImage, setShowImage] = useState(false);
     
-
 
     function handleClick(){ 
         //once clicked I want to check if clicked is first or second
@@ -53,15 +54,14 @@ export default function Image(
                     setShowImage(false)
                     clickedValue.setShow(false)
                 }else{
-                    setCount(count++)
+                    setSrcs([...srcs, src])
                 }
             }, 1000)
            
         }
 
+        setCount(count+=1)
         
-
-
 
         //because I was clicked I can check if I am first to act or the second
 
