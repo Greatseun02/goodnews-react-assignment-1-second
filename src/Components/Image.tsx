@@ -18,8 +18,16 @@ export default function Image(
     function handleClick(){ 
         // setClicked(clicked++)
    
-        if(clickedValue.src){
-            //meaning it is second to be clicked
+        if(!clickedValue.src){
+            
+            //temp show
+            setShowImagePerm(true);
+
+            //add it has clicked
+            setClickedValue({src:src, setShow:setShowImagePerm})
+
+        }else{
+             //meaning it is second to be clicked
             //show temp to user sha
             setShowImagePerm(true);
 
@@ -43,13 +51,6 @@ export default function Image(
                 
             // }, 1000)
             //compare
-        }else{
-            console.log("first")
-            //temp show
-            setShowImagePerm(true);
-
-            //add it has clicked
-            setClickedValue({src:src, setShow:setShowImagePerm})
         }
 
 
