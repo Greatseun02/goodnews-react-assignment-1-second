@@ -13,13 +13,15 @@ export default function MemoryGame({images, setCount, count, highScore, setHighS
   useEffect(
     ()=>{
       if(srcs.length === 6){
-        if(count < Number(highScore)){
+
+        if((count < Number(highScore)) || Number(highScore) === 0){
           setHighScore(count.toString());
           sessionStorage.setItem("highscore", count.toString());
         }
 
         setShowRefresh(true);
       }
+
     }
     ,[srcs]
   )
