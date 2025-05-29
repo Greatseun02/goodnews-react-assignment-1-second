@@ -17,9 +17,9 @@ export default function MemoryGame({images, setCount, count, highScore, setHighS
           setHighScore(count.toString());
           sessionStorage.setItem("highscore", count.toString());
         }
-      }
 
-      setShowRefresh(true);
+        setShowRefresh(true);
+      }
     }
     ,[srcs]
   )
