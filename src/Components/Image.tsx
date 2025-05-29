@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
+import type { valueStateType } from "./MemoryGame";
+
+
 
 export default function Image(
     {
@@ -9,7 +12,15 @@ export default function Image(
         setCount,
         setSrcs,
         srcs
-    }:any
+    }: {
+            src:string,
+            srcs: string[],
+            count: number
+            clickedValue: valueStateType,
+            setClickedValue: Dispatch<SetStateAction<valueStateType>>,
+            setCount: Dispatch<SetStateAction<number>>,
+            setSrcs: Dispatch<SetStateAction<string[]>>
+    }
 ) {
 
     let [showImage, setShowImage] = useState(false);
@@ -21,7 +32,7 @@ export default function Image(
         //for first time
 
         //if click for first time
-        if(!clickedValue.src){
+        if(!clickedValue.value){
             
             //i want to show the image that we clicked on
             setShowImage(true);
@@ -31,7 +42,7 @@ export default function Image(
 
 
             //add it has clicked
-            setClickedValue({src:src, setShow:setShowImage})
+            setClickedValue({value:src, setValue:setShowImage})
 
         }else{
             
@@ -46,13 +57,15 @@ export default function Image(
 
             //it all made sense after
 
-            setClickedValue({})
+            setClickedValue({value:"", setValue:null})
 
             setTimeout(()=>{
-                if(!(clickedValue.src === src)){
+                if(!(clickedValue.value === src)){
                 
                     setShowImage(false)
-                    clickedValue.setShow(false)
+                    if(clickedValue.setValue){
+                        clickedValue.setValue(false)
+                    }
                 }else{
                     setSrcs([...srcs, src])
                 }
