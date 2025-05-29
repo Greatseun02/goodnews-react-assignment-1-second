@@ -56,7 +56,7 @@ img, .falseDiv{
 }
 
 
-.screen{
+.screen, .refresh{
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: 40px;
@@ -67,7 +67,7 @@ img, .falseDiv{
   height: 100%;
 }
 
-.screen div{
+.screen div, .refresh div{
   background-color: #fff;
   padding: 100px;
   border-radius: 30px;
@@ -75,7 +75,7 @@ img, .falseDiv{
   gap: 20px;
 }
 
-.screen button{
+.screen button, .refresh button{
   background: black;
   border: 0;
   color: white;
@@ -89,12 +89,12 @@ img, .falseDiv{
   transition: all ease-in-out 300ms;
 }
 
-.screen button:hover {
+.screen button:hover, .refresh button:hover{
   padding: 6px 25px;
   color: bisque;
 }
 
-.screen h1{
+.screen h1, .refresh h1{
   font-size: 30px;
 }
 
