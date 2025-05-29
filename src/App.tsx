@@ -20,6 +20,9 @@ doubleImages = shuffle(doubleImages);
 
 function App() {
   const [showWelcome, setShowWelcome]= useState(true);
+  const [count, setCount] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
   return (
     <div id='app'>
       {
@@ -31,9 +34,18 @@ function App() {
           </div>
         </div>
       }
-      <p className='title'>Guess the Image</p>
+      <div>
+        <p className='title'>Guess the Image</p>
+        <div className='metric'>
+          <p>Count: </p>
+          <p>High Score:</p>
+        </div>
+      </div>
       <MemoryGame 
         images={doubleImages}
+        setCount={setCount}
+        highScore={highScore}
+        setHighScore={setHighScore}
       />
     </div>
   )

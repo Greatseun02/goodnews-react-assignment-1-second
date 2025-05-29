@@ -41,6 +41,8 @@ export default function Image(
             //I want to check if the src is the prev src then
             //I should just clear 
 
+            //it all made sense after
+
             setClickedValue({})
 
             setTimeout(()=>{
