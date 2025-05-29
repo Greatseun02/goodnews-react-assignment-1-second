@@ -1,20 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState, type SetStateAction } from 'react';
 import Image from './Image'
 
 
+type valueStateType = {value:string, setValue:SetStateAction<boolean> | null}
+
 export default function MemoryGame({images}: {images:string[]}) {
 
-  const [clickedValue, setClickedValue] = useState({});
-  const [clicked, setClicked] = useState(0);
-  const MAX_CLICK_PER_ROUND = 2;
-    
-//   useEffect(()=>{
-//     if(clicked===2){
-//         setClicked(0);
-
-//         //remove all temp classes
-//     }
-//   },[clicked])
+  const [clickedValue, setClickedValue] = useState<valueStateType>({value:"", setValue:null});
 
   return (
     <div className='imgDivContainer'>
@@ -24,9 +16,6 @@ export default function MemoryGame({images}: {images:string[]}) {
                 <Image
                     clickedValue = {clickedValue}
                     setClickedValue= {setClickedValue}
-                    clicked= {clicked}
-                    setClicked= {setClicked}
-                    MAX_CLICK_PER_ROUND = {MAX_CLICK_PER_ROUND}
                     key={count} src={image}
                 />
             )
